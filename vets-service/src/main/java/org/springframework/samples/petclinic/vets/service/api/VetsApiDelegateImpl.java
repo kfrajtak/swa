@@ -2,24 +2,15 @@ package org.springframework.samples.petclinic.vets.service.api;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.samples.petclinic.vets.service.api.model.VetDto;
+import org.springframework.samples.petclinic.vets.service.model.VetRepository;
+import org.springframework.samples.petclinic.vets.service.model.mappers.VetMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-public class VetsApiDelegateImpl implements VetsApiDelegate {
-
-    @Override
-    public ResponseEntity<List<VetDto>> getAllVets() {
-        List<VetDto> vets = new ArrayList<>();
-        vets.add(new VetDto().id(1l).firstName("X").lastName("Y"));
-        vets.add(new VetDto());
-        vets.add(new VetDto().id(3l).firstName("A").lastName("D"));
-        return ResponseEntity.ok(vets);
-    }
-}
-/*public class VetsApiDelegateImpl implements VetsApiDelegate {
+public class VetsApiDelegateImpl implements org.springframework.samples.petclinic.vets.service.api.VetsApiDelegate {
 
     private final VetRepository vetRepository;
 
@@ -28,10 +19,10 @@ public class VetsApiDelegateImpl implements VetsApiDelegate {
     }
 
     @Override
-    public ResponseEntity<List<VetDto>> listAllVets() {
+    public ResponseEntity<List<VetDto>> getAllVets() {
         return ResponseEntity.ok(
             vetRepository.findAll()
                 .stream().map(VetMapper.INSTANCE::mapTo)
                 .collect(Collectors.toList()));
     }
-}*/
+}
