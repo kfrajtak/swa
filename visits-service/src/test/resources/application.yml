@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: visits-service
+
+eureka:
+  client:
+    enabled: false
+
