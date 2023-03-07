@@ -1,16 +1,15 @@
-package org.springframework.samples.petclinic.vets.springpetclinicvetsservice;
+package org.springframework.samples.petclinic.vets.service;
 
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.samples.petclinic.vets.service.OpenApiGeneratorApplication;
 
 import static io.restassured.RestAssured.get;
 
 @SpringBootTest(classes = OpenApiGeneratorApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SpringPetclinicVetsServiceApplicationTests {
+public class VetsControllerTests {
     @LocalServerPort
     private int port;
 
