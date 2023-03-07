@@ -21,23 +21,23 @@ import java.util.stream.Collectors;
 public class VisitsServiceApplication {
     Logger logger = LoggerFactory.getLogger(VisitsServiceApplication.class);
 
-    @Autowired
-    private VetsServiceApiClient vetsServiceApiClient;
+    //@Autowired
+    //private VetsServiceApiClient vetsServiceApiClient;
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
+    //@Autowired
+    //private DiscoveryClient discoveryClient;
 
     public static void main(String[] args) {
         SpringApplication.run(VisitsServiceApplication.class, args);
     }
 
-    @PostConstruct
-    public void start() {
+    //@PostConstruct
+    /*public void start() {
         logger.info("Starting ...");
         // get the information about the service programmatically
         List<ServiceInstance> instances = this.discoveryClient.getInstances("vets-service");
         List<String> uris = instances.stream().map(i -> i.getUri().toString()).collect(Collectors.toList());
         logger.info("vets-service running at {}", String.join(", ", uris));
         logger.info(vetsServiceApiClient.getAllVets().getBody().size() + "");
-	}
+	}*/
 }
