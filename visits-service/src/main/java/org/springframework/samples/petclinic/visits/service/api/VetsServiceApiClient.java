@@ -17,11 +17,11 @@ public interface VetsServiceApiClient extends VetsApi {
     Logger logger = LoggerFactory.getLogger(VetsServiceApiClient.class);
 
     @Component
-    class VetsServiceApiClienttFallback implements VetsServiceApiClient {
+    class VetsServiceApiClienttFallback implements VetsApi {
         @Override
         public ResponseEntity<List<VetDto>> getAllVets() {
             logger.info("fallback to get empty list of vets");
-            return ResponseEntity.ok(new ArrayList<VetDto>());
+            return ResponseEntity.ok(new ArrayList<>());
         }
     }
 }
