@@ -2,8 +2,8 @@ package org.springframework.samples.petclinic.vets.service.model.mappers;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.springframework.samples.petclinic.vets.service.api.model.VetDto;
 import org.springframework.samples.petclinic.vets.service.model.Vet;
+import org.springframework.samples.petclinic.vets.service.api.model.VetDto;
 
 @Mapper
 public interface VetMapper {

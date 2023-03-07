@@ -1,0 +1,65 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Vets Service
+  license:
+    name: MIT
+paths:
+  /vets:
+    get:
+      summary: List all vets
+      operationId: getAllVets
+      tags:
+      - vets
+      responses:
+        '200':
+          description: An array of vets
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Vets"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Vet:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        lastName:
+          type: string
+        specialties:
+          type: array
+          items:
+            $ref: "#/components/schemas/Specialty"
+    Vets:
+      type: array
+      items:
+        $ref: "#/components/schemas/Vet"
+    Specialty:
+      type: object
+      properties:
+        id: 
+          type: integer
+          format: int32
+        name:
+          type: string
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

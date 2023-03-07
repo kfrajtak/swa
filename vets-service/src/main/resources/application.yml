@@ -18,6 +18,18 @@ spring:
     console:
       enabled: true
 
+server:
+  port: 0 # let Spring Boot choose a random port - it will be accessed with its name
+eureka:
+  healthcheck:
+    enabled: true
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
+
 management:
   endpoints:
     web:
