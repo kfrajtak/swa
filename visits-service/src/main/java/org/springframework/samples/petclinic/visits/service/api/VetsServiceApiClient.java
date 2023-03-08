@@ -12,12 +12,12 @@ import java.util.List;
 
 @FeignClient(
     name = "vets-service",
-    fallback = VetsServiceApiClient.VetsServiceApiClienttFallback.class)
+    fallback = VetsServiceApiClient.VetsServiceApiClientFallback.class)
 public interface VetsServiceApiClient extends VetsApi {
     Logger logger = LoggerFactory.getLogger(VetsServiceApiClient.class);
 
     @Component
-    class VetsServiceApiClienttFallback implements VetsApi {
+    class VetsServiceApiClientFallback implements VetsApi {
         @Override
         public ResponseEntity<List<VetDto>> getAllVets() {
             logger.info("fallback to get empty list of vets");

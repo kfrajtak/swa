@@ -2,6 +2,7 @@ spring:
   application:
     name: discovery-server
   config:
+    # https://docs.spring.io/spring-cloud-config/docs/current/reference/html/
     import: "optional:configserver:"
 
 server:
