@@ -9,8 +9,8 @@ INSERT INTO specialties VALUES (1, 'radiology');
 INSERT INTO specialties VALUES (2, 'surgery');
 INSERT INTO specialties VALUES (3, 'dentistry');
 
-INSERT INTO vet_specialties VALUES (2, 1);
-INSERT INTO vet_specialties VALUES (3, 2);
-INSERT INTO vet_specialties VALUES (3, 3);
-INSERT INTO vet_specialties VALUES (4, 2);
-INSERT INTO vet_specialties VALUES (5, 1);
+INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (2, 1);
+INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (3, 2);
+INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (3, 3);
+INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (4, 2);
+INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (5, 1);

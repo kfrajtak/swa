@@ -37,17 +37,21 @@ public class VisitsServiceApplication {
         logger.info("Starting ...");
         // get the information about the service programmatically
         try {
-            List<ServiceInstance> instances = this.discoveryClient.getInstances("vets-service");
-            List<String> uris = instances.stream().map(i -> i.getUri().toString()).collect(Collectors.toList());
-            logger.info("vets-service running at {}", String.join(", ", uris));
+            List<ServiceInstance> instances = this.discoveryClient.getInstances("VETS-SERVICE");
+            if (instances.isEmpty()) {
+                logger.warn("no services available");
+            } else {
+                List<String> uris = instances.stream().map(i -> i.getUri().toString()).collect(Collectors.toList());
 
-            List<String> services = this.discoveryClient.getServices();
-            logger.info("available services: {}", String.join(", ", services));
+                logger.info("{} vets-service running at {}", instances.size(), String.join(", ", uris));
 
-            logger.info(vetsServiceApiClient.getAllVets().getBody().size() + "");
-        }
-        catch (Throwable t) {
+                List<String> services = this.discoveryClient.getServices();
+                logger.info("available services: {}", String.join(", ", services));
+            }
+            logger.info("Result of calling vets-service: {}", vetsServiceApiClient.getAllVets().getBody().size() + "");
+        } catch (
+                Throwable t) {
             logger.warn("An error has occurred in vets-service discovery", t);
         }
-	}
+    }
 }

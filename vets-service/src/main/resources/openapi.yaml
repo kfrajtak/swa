@@ -32,9 +32,7 @@ components:
         id:
           type: integer
           format: int64
-        firstName:
-          type: string
-        lastName:
+        name:
           type: string
         specialties:
           type: array

@@ -42,12 +42,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
@@ -125,7 +119,7 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>6.4.0</version>
+                <version>7.10.0</version>
                 <executions>
                     <execution>
                         <goals>
@@ -137,6 +131,7 @@
                             <apiPackage>${project-base-package}.api</apiPackage>
                             <modelPackage>${project-base-package}.api.model</modelPackage>
                             <modelNameSuffix>Dto</modelNameSuffix>
+                            <ignoreFileOverride>.openapi-generator-ignore</ignoreFileOverride>
                             <configOptions>
                                 <basePackage>${project-base-package}</basePackage>
                                 <delegatePattern>true</delegatePattern>
@@ -145,44 +140,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>1.8</source> <!-- depending on your project -->
-                    <target>1.8</target> <!-- depending on your project -->
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.mapstruct</groupId>
-                            <artifactId>mapstruct-processor</artifactId>
-                            <version>1.5.3.Final</version>
-                        </path>
-                        <!-- other annotation processors -->
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <!-- remove the unwanted generated testcases by the spring generator of openapi -->
-                                <delete dir="${project.build.directory}/generated-sources/openapi/src/test" />
-                                <delete dir="${project.build.directory}/generated-sources/openapi/src/main/java/org/springframework/samples/petclinic/vets/service/api/swagger/OpenApiGeneratorApplication.java" />
-                                <delete dir="${project.build.directory}/generated-sources/openapi/src/main/java/org/openapitools/OpenApiGeneratorApplication.java" />
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
     </build>
 

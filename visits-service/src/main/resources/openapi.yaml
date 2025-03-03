@@ -10,7 +10,7 @@ paths:
       summary: List all vets
       operationId: getAllVets
       tags:
-      - vets
+        - vets
       responses:
         '200':
           description: An array of vets
@@ -32,9 +32,7 @@ components:
         id:
           type: integer
           format: int64
-        firstName:
-          type: string
-        lastName:
+        name:
           type: string
         specialties:
           type: array
@@ -47,7 +45,7 @@ components:
     Specialty:
       type: object
       properties:
-        id: 
+        id:
           type: integer
           format: int32
         name:
@@ -55,8 +53,8 @@ components:
     Error:
       type: object
       required:
-      - code
-      - message
+        - code
+        - message
       properties:
         code:
           type: integer
